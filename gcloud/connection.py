@@ -15,12 +15,12 @@
 """Shared implementation of connections to API servers."""
 
 import json
-from pkg_resources import get_distribution
 import six
 from six.moves.urllib.parse import urlencode  # pylint: disable=F0401
 
 import httplib2
 
+import gcloud
 from gcloud.exceptions import make_exception
 
 
@@ -63,7 +63,7 @@ class Connection(object):
     :param http: An optional HTTP object to make requests.
     """
 
-    USER_AGENT = "gcloud-python/{0}".format(get_distribution('gcloud').version)
+    USER_AGENT = "gcloud-python/{0}".format(gcloud.__version__)
     """The user agent for gcloud-python requests."""
 
     SCOPE = None
